@@ -7,9 +7,28 @@
 </head>
 
 <body>
-  <div id="app">
-    {{ firstName }}
+  <!-- Adding directive (atribute) -->
+  <div id="app" v-cloak>
+    <!-- Full Name function -->
+    <p>{{ fullName() }}</p>
+    <!-- Bind the atrribute 'v-bind:' or can be simply used just ':' in front -->
+    <a v-bind:href="url" target="_blank">Google</a>
+    <!-- Rendering as a text not html -->
+    <p>{{ raw_url }}</p>
+    <!-- Rendering as html if added as directive -->
+    <p v-html="raw_url"></p>
+    <hr />
+    <label>First Name</label>
+    <input type="text" v-model="firstName" />
+
+    <label>Last Name</label>
+    <input type="text" v-model="lastName" />
   </div>
+
+  <!-- <div id="appId">
+    {{ firstName }}
+    {{ lastName }}
+  </div> -->
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="app.js"></script>
