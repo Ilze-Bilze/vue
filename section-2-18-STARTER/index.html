@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <title>VueJS Course</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+  <div id="app">
+    <label>
+      <input type="checkbox" v-model="isPurple" /> Purple
+    </label>
+
+    <select v-model="selectedColor">
+      <option value="">White</option>
+      <option value="text-black">Black</option>
+      <option value="text-orange">Orange</option>
+    </select>
+
+    <div>
+      <input type="range" id="volume" name="size" min="150" max="1500" v-model="size" />
+    </div>
+    
+    <hr/>
+    
+    <!-- Class and Style Binding: https://vuejs.org/guide/essentials/class-and-style.html#class-and-style-bindings -->
+    <div class="circle" :class="[selectedColor, circle_classes]" :style="[
+      { width: size + 'px', height: size + 'px', 'line-height': size + 'px' }, 
+      { transform: 'rotate(30deg)' }
+    ]">
+      Hi!
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

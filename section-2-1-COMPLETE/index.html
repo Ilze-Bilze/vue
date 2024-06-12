@@ -10,19 +10,40 @@
   <!-- Adding directive (atribute) -->
   <div id="app" v-cloak>
     <!-- Full Name function -->
-    <p>{{ fullName() }}</p>
+    <p>{{ fullName }}</p>
     <!-- Bind the atrribute 'v-bind:' or can be simply used just ':' in front -->
     <a v-bind:href="url" target="_blank">Google</a>
     <!-- Rendering as a text not html -->
     <p>{{ raw_url }}</p>
     <!-- Rendering as html if added as directive -->
     <p v-html="raw_url"></p>
-    <hr />
-    <label>First Name</label>
-    <input type="text" v-model="firstName" />
+    <p>{{ typeof age }}</p>
 
-    <label>Last Name</label>
-    <input type="text" v-model="lastName" />
+    <hr />
+
+    <label for="name">First Name</label>
+    <input id="name" type="text" v-model.lazy.trim="firstName" />
+
+    <!-- Adding key modifiers https://vuejs.org/guide/essentials/event-handling.html#key-modifiers -->
+    <label for="middlename">Middle Name</label>
+    <input id="middlename" type="text" :value="middleName" @keyup.enter="updateMiddleName" />
+
+    <label for="lastname">Last Name</label>
+    <input id="lastname" type="text" v-model="lastName" />
+
+    <label for="age">Age</label>
+    <input id="age" type="number" v-model.number="age" />
+
+    <!-- Adding event modifier "@input.prevent" https://vuejs.org/guide/essentials/event-handling.html#event-modifiers -->
+    <input id="text" type="text" :value="lastName" @input.prevent="updateLastName('Last name event triggered!', $event)" />
+
+    <!-- Events can be added with "v-on:" or just "@" and event -->
+    <button type="button" v-on:click="increment">Increment</button>
+    <button type="button" v-on:click="age--">Dicrement</button>
+
+    <!-- Events with shorthand method -->
+    <button type="button" @click="increment">Increment</button>
+    <button type="button" @click.ctrl="age--">Dicrement</button>
   </div>
 
   <!-- <div id="appId">
